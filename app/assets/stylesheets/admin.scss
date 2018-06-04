@@ -1,3 +1,9 @@
-// Place all the styles related to the admin controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.side-nav {
+  border-right: 1px solid black;
+  height: 100vh;
+}
+
+#side-nav-img {
+  padding: 15px;
+  margin-bottom: 40px;
+}

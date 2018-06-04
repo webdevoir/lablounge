@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-2">
+    <%= render 'sidenav' %>
+  </div>
+
+  <div class="col-lg-10">
+    <div>
+      <%= link_to 'Logout', destroy_admin_session_path, method: 'delete', class: 'float-right' %>
+    </div>
+    <h1 class="text-center">About</h1>
+
+    <%= form_for :about, url: about_update_path, method: 'put' do |f| %>
+      <% if @about.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@about.errors.count, "error") %> prohibited this from being updated:</h2>
+
+          <ul>
+          <% @about.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group row">
+        <%= f.label :about_heading, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.text_area :about_heading, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :about_description, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.text_area :about_description, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Submit", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
