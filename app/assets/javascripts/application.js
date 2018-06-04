@@ -11,7 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require popper
 //= require bootstrap-sprockets
+//= require typed
+//= require isotope.pkgd
+//= require magnific-popup
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .

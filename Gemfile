@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 # Bootstrap 4
 gem 'bootstrap', '~> 4.0.0'
+gem 'popper_js', '~> 1.12.9'
 gem 'sprockets-rails'
 
 gem 'hirb'
