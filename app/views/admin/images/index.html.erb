@@ -3,15 +3,23 @@
     <%= render 'layouts/sidenav' %>
   </div>
 
-  <div class="col-lg-10 text-center">
+  <div class="col-lg-10 text-center" style="padding: 50px;">
 
-    <h1>Your Images</h1>
-    <div>
+    <h1 class="text-center admin-header">Your Images</h1>
+    <div class="row">
       <% @images.each do |image| %>
-        <% image.image.each_with_index do |i, index| %>
-          <%= link_to(image_tag(i.thumb.url), i.url, target: '_blank') %>
-          <%= link_to 'Delete Image', admin_destroy_image_path(image, index), method: 'delete' %>
-        <% end %>
+        <div class="row">
+          <% image.image.each_with_index do |i, index| %>
+            <div class="col-md-3">
+              <div class="card" style="width: 18rem;">
+                <%= link_to(image_tag(i.thumb.url), i.url, target: '_blank') %>
+                <div class="card-body">
+                  <%= link_to 'Delete Image', admin_destroy_image_path(image, index), method: 'delete' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
 

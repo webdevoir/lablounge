@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :user, controllers: { sessions: 'user/sessions' }
 
-  
-
   namespace :admin do
     get '/', to: 'admin#dashboard'
-    get '/admin/about/:id', to: 'admin#about_edit', as: :about_edit
-    put '/admin/about/:id/update', to: 'admin#about_update', as: :about_update
+
+    get 'about', to: 'about#index'
+    get 'about/new', to: 'about#new'
+    get 'about/:id', to: 'about#edit', as: :about_edit
+    post 'about', to: 'about#create', as: :about_create
+    put '/about/:id/update', to: 'about#update', as: :about_update
 
     get '/images', to: 'images#index'
     post '/images', to: 'images#create'

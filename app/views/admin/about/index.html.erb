@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-2">
+    <%= render 'layouts/sidenav' %>
+  </div>
+
+  <div class="col-lg-10 text-center" style="padding: 50px;">
+    <div>
+    </div>
+    <h1 class="text-center admin-header">About Section</h1>
+    <div class="messages">
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %></p>
+      <% end %>
+    </div>
+
+    <% @abouts.each do |a| %>
+      <div class="card mb-3 shadow-lg w-75 mx-auto">
+        <div class="card-header text-white bg-dark">
+          <strong>About Heading</strong>
+        </div>
+        <div class="card-body">
+          <%= text_field_tag :about_heading, a.about_heading, class: 'form-control' %>
+          <span class="float-right about-update" id=<%=a.id %>>Update</span>
+        </div>
+      </div>
+      <div class="card mb-3 shadow-lg w-75 mx-auto">
+        <div class="card-header text-white bg-dark">
+          <strong>About Description</strong>
+        </div>
+        <div class="card-body">
+          <%= text_field_tag :about_description, a.about_description, class: 'form-control' %>
+          <span class="float-right about-update" id=<%=a.id %>>Update</span>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless @abouts.any? %>
+      <%= link_to 'Add About Section', admin_about_new_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
