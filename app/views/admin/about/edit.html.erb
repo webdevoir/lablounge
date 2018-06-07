@@ -9,16 +9,14 @@
     <h1 class="text-center">About</h1>
 
     <%= form_for @about, url: admin_about_update_path, method: 'put' do |f| %>
-      <% if @about.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@about.errors.count, "error") %> prohibited this from being updated:</h2>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
 
-          <ul>
-          <% @about.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
+      <% if flash[:alert] %>
+        <% flash[:alert].each do |alert| %>
+          <p><%= alert %></p>
+        <% end %>
       <% end %>
 
       <div class="form-group row">

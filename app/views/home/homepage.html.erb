@@ -51,8 +51,10 @@
 
       <div class="col-lg-7">
         <div class="about-descr">
-          <p class="p-heading"><%= @about.about_heading %></p>
-          <p class="separator"><%= @about.about_description %></p>
+          <% if @about.present? %>
+            <p class="p-heading"><%= @about.about_heading %></p>
+            <p class="separator"><%= @about.about_description %></p>
+          <% end %>
         </div>
 
       </div>

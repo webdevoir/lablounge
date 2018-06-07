@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 
 # Bootstrap 4
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.1.0'
 gem 'popper_js', '~> 1.12.9'
 gem 'sprockets-rails'
 

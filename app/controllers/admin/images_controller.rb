@@ -1,13 +1,11 @@
 module Admin
-  class ImagesController < ApplicationController
-    before_action :authenticate_user!
+  class ImagesController < AdminController
 
     before_action :set_image, only: [:destroy]
 
     def index
       @images = Image.all
       @image = Image.new
-      @about = About.last
     end
 
     def create
@@ -24,10 +22,10 @@ module Admin
     def destroy
       destroy_image = remove_image_at_index(params[:index].to_i)
       if destroy_image
-        flash[:notice] = "delete successful"
+        flash[:notice] = "Delete successful"
         redirect_to admin_images_path
       else
-        flash[:alert] = "sorry can't delete the photo"
+        flash[:alert] = "Sorry can't delete the photo"
         redirect_to admin_images_path
       end
     end
