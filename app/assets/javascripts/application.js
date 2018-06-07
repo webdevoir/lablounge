@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require popper
+//= require owl.carousel
 //= require bootstrap-sprockets
 //= require typed
 //= require isotope.pkgd
