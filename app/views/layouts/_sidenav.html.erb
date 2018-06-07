@@ -1,0 +1,21 @@
+<ul class="nav flex-column side-nav">
+  <%= link_to(image_tag('LAB-logo-blk.png', height: '100', width: '150', id: 'side-nav-img'), admin_path, class: 'navbar-brand') %>
+  <li class="nav-item">
+    <%= link_to 'About', admin_about_edit_path(@about.id), class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Gallery', admin_images_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Services</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">FAQ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Client Consents</a>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'nav-link' %>
+  </li>
+</ul>

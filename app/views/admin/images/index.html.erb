@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-2">
+    <%= render 'layouts/sidenav' %>
+  </div>
+
+  <div class="col-lg-10 text-center">
+
+    <h1>Your Images</h1>
+    <div>
+      <% @images.each do |image| %>
+        <% image.image.each_with_index do |i, index| %>
+          <%= link_to(image_tag(i.thumb.url), i.url, target: '_blank') %>
+          <%= link_to 'Delete Image', admin_destroy_image_path(image, index), method: 'delete' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h3>Upload an Image</h3>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <% flash[:alert].each do |alert| %>
+        <p><%= alert %></p>
+      <% end %>
+    <% end %>
+
+
+    <%= form_for @image, url: admin_images_path, html: { multipart: true } do |f| %>
+      <div class="form-group row">
+        <%= f.label :image, class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= f.file_field :image, class: 'form-control', multiple: true %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Upload", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
