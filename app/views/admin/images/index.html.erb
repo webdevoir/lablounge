@@ -5,25 +5,7 @@
 
   <div class="col-lg-10 text-center" style="padding: 50px;">
 
-    <h1 class="text-center admin-header">Your Images</h1>
-    <div class="row">
-      <% @images.each do |image| %>
-        <div class="row">
-          <% image.image.each_with_index do |i, index| %>
-            <div class="col-md-3">
-              <div class="card" style="width: 18rem;">
-                <%= link_to(image_tag(i.thumb.url), i.url, target: '_blank') %>
-                <div class="card-body">
-                  <%= link_to 'Delete Image', admin_destroy_image_path(image, index), method: 'delete' %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <h3>Upload an Image</h3>
+    <h1 class="text-center admin-header">Gallery Images</h1>
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
@@ -34,11 +16,28 @@
       <% end %>
     <% end %>
 
+    <% if @images.any? %>
+      <div class="row">
+        <% @images.each do |image| %>
+          <% image.image.each_with_index do |i, index| %>
+            <div class="card" style="width: 18rem;">
+              <%= link_to(image_tag(i.thumb.url), i.url, target: '_blank') %>
+              <div class="card-body">
+                <%= link_to '', admin_destroy_image_path(image, index), method: 'delete', class: 'ion-close-circled' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>You have no images yet...</p>
+    <% end %>
 
+    <h3 style="margin-top: 100px;">Upload an Image</h3>
+    
     <%= form_for @image, url: admin_images_path, html: { multipart: true } do |f| %>
-      <div class="form-group row">
-        <%= f.label :image, class: 'col-sm-2 col-form-label' %>
-        <div class="col-sm-10">
+      <div class="form-group">
+        <div class="col-sm-4 mx-auto">
           <%= f.file_field :image, class: 'form-control', multiple: true %>
         </div>
       </div>
@@ -47,5 +46,6 @@
         <%= f.submit "Upload", class: 'btn btn-primary' %>
       </div>
     <% end %>
+
   </div>
 </div>
