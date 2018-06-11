@@ -1,0 +1,35 @@
+<%# Because we're not using standard RESTful routes/Resource-oriented style %>
+<% if @service.new_record?
+  action = "create"
+  method = "post"
+else
+  action = "update"
+  method = "put"
+end
+%>
+
+<%= form_for @service, url: {action: action}, method: method do |f| %>
+  <% if flash[:alert] %>
+    <% flash[:alert].each do |alert| %>
+      <p><%= alert %></p>
+    <% end %>
+  <% end %>
+
+  <div class="form-group row w-50 mx-auto">
+    <%= f.label :name, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row w-50 mx-auto">
+    <%= f.label :description, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+<% end %>
