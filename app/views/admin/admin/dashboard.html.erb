@@ -3,13 +3,8 @@
     <%= render 'layouts/sidenav' %>
   </div>
 
-  <div class="col-lg-10">
-    <div>
-      <%= link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'float-right' %>
-    </div>
+  <div class="col-lg-10 padding-50 text-center">
     <h1 class="text-center">Admin Dashboard</h1>
-      <% if notice %>
-        <p><%= notice %></p>
-      <% end %>
+    <h3>Last Sign In Date: <%= current_user.last_sign_in_at %></h3>
   </div>
 </div>
