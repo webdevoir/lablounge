@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     get '/images', to: 'images#index'
     post '/images', to: 'images#create'
     delete '/image/:id/:index', to: 'images#destroy', as: :destroy_image
+
+    resources :services do
+      resources :service_items
+    end
   end
 
 
