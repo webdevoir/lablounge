@@ -102,9 +102,10 @@
           <% @services.each do |service| %>
 
             <p>
-              <%= link_to service.name, '', class: 'btn btn-lg btn-danger services-btn', 'data-toggle' => 'collapse', 'data-target' => '#' + service.name, 'aria-expanded' => 'false', 'aria-controls' => 'collapseExample' %>
+              <button class="btn btn-lg btn-danger services-btn mx-auto" type="button" data-toggle="collapse" data-target=#<%= service.name %> aria-expanded="false" aria-controls="collapseExample" style="display: block;">
+                <%= service.name %> <i class="ion-android-arrow-dropdown"></i>
+              </button>
             </p>
-
             <%= tag.div class: 'collapse', id: service.name do %>
               <div class="card card-body">
                 <p class="service-description">
