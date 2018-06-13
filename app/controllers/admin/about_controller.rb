@@ -28,13 +28,9 @@ module Admin
     def update
       @about = About.find(params[:id])
       if @about.update(about_params)
-        #flash[:notice] = 'Successfully update About section.'
-        #redirect_to admin_about_path
         render json: {status: "ok"}, status: :ok
       else
-        flash[:alert] = @about.errors.full_messages
-        puts "oops"
-        redirect_to admin_about_path
+        render json: {status: 'error'}, status: :unprocessable_entity
       end
     end
 
