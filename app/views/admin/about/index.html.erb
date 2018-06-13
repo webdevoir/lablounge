@@ -23,7 +23,7 @@
         </div>
         <div class="card-body">
           <%= text_field_tag :about_heading, a.about_heading, class: 'form-control' %>
-          <span class="float-right about-update" id=<%=a.id %>>Update</span>
+          <button class="btn btn-sm float-right about-update" id=<%=a.id %>>Update</button>
         </div>
       </div>
       <div class="card mb-3 shadow-lg w-75 mx-auto">
@@ -32,7 +32,7 @@
         </div>
         <div class="card-body">
           <%= text_field_tag :about_description, a.about_description, class: 'form-control' %>
-          <span class="float-right about-update" id=<%=a.id %>>Update</span>
+          <button class="btn btn-sm float-right about-update" id=<%=a.id %>>Update</button>
         </div>
       </div>
     <% end %>
