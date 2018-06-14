@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :user, controllers: { sessions: 'user/sessions' }
 
+  as :user do
+    get 'login', to: 'user/sessions#new'
+  end
+
   namespace :admin do
-    get '/', to: 'admin#dashboard'
+    get '/dashboard', to: 'admin#dashboard'
+    patch '/account_update', to: 'admin#update_admin_account'
 
     get 'about', to: 'about#index'
     get 'about/new', to: 'about#new'
