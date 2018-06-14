@@ -29,6 +29,9 @@ $enable-shadows: true !default;
 .random {
   color: red;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 
 @import "bootstrap";
 @import "magnific-popup"
