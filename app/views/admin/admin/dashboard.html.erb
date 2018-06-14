@@ -5,6 +5,80 @@
 
   <div class="col-lg-10 padding-50 text-center">
     <h1 class="text-center">Admin Dashboard</h1>
-    <h3>Last Sign In Date: <%= current_user.last_sign_in_at %></h3>
+
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <% flash[:alert].each do |alert| %>
+        <p><%= alert %></p>
+      <% end %>
+    <% end %>
+
+    <div class="card-columns padding-50">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Last Sign in Date</h5>
+          <p class="card-text"><%= current_user.last_sign_in_at %></p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Your Email</h5>
+          <p class="card-text"><%= current_user.email %></p>
+          <button type="button" class="btn btn-primary margin-20" data-toggle="modal" data-target="#updateEmailModal">
+            Update Email Address
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Upcoming Client Birthdays</h5>
+          <p class="card-text">Julie: June 20th</p>
+          <p class="card-text">Julie: June 20th</p>
+          <p class="card-text">Maggie: June 30th</p>
+          <p class="card-text">Sarah: July 1st</p>
+          <p class="card-text">Hannah: July 4th</p>
+          
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <button type="button" class="btn btn-primary margin-20" data-toggle="modal" data-target="#updatePasswordModal">
+            Change Password
+          </button>
+        </div>
+      </div>
+
+      <div class="card p-3 text-right">
+        <blockquote class="blockquote mb-0">
+          <h5 class="card-title">Quote of the Day</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer class="blockquote-footer">
+            <small class="text-muted">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Stats</h5>
+          <p class="card-text">Lash Clients last 30 days: <span class="badge badge-info">9</span></p>
+          <p class="card-text">Brow Clients last 30 days: <span class="badge badge-info">15</span></p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+    </div>
+
+    <%= render 'layouts/update_admin_email_modal' %>
+    <%= render 'layouts/update_admin_password_modal' %>
   </div>
 </div>
