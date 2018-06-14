@@ -3,11 +3,8 @@
     <%= render 'layouts/sidenav' %>
   </div>
 
-  <div class="col-lg-10">
-    <div>
-    </div>
-    <h1 class="text-center">Add About Section</h1>
-
+  <div class="col-lg-10 text-center padding-50">
+    <h1 class="text-center admin-header">Add About Section</h1>
     <%= form_for @about, url: admin_about_create_path do |f| %>
       <% if flash[:alert] %>
         <% flash[:alert].each do |alert| %>
@@ -15,14 +12,14 @@
         <% end %>
       <% end %>
 
-      <div class="form-group row">
+      <div class="form-group row w-75 mx-auto">
         <%= f.label :about_heading, class: 'col-sm-2 col-form-label' %>
         <div class="col-sm-10">
           <%= f.text_area :about_heading, class: 'form-control' %>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row w-75 mx-auto">
         <%= f.label :about_description, class: 'col-sm-2 col-form-label' %>
         <div class="col-sm-10">
           <%= f.text_area :about_description, class: 'form-control' %>
