@@ -1,1 +1,2 @@
-vendor/assets/javascripts linguist-vendored
+* linguist-vendored
+*.js linguist-vendored=false
