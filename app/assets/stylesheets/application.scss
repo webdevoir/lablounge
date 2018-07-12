@@ -36,3 +36,7 @@ $enable-shadows: true !default;
 .uppercase {
   text-transform: uppercase;
 }
+
+.form-control {
+  text-transform: none;
+}
