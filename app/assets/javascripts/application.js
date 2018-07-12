@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery3
+//= require jquery-ui/widgets/datepicker
 //= require popper
 //= require owl.carousel
 //= require bootstrap-sprockets
@@ -20,3 +21,11 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $('.datepicker').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "1930:2005"
+  });
+})

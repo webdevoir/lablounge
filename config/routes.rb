@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'lash_consents/new'
+
   devise_for :user, controllers: { sessions: 'user/sessions' }
 
   as :user do
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
       resources :service_items
     end
   end
+
+  resources :lash_consents, only: [:new, :create]
 
 
   root 'home#homepage'
