@@ -17,6 +17,9 @@
  *= require_tree .
  */
 
+@import "bootstrap";
+@import "magnific-popup";
+
 $enable-shadows: true !default;
 .admin-header {
   margin-bottom: 50px;
@@ -33,6 +36,3 @@ $enable-shadows: true !default;
 .uppercase {
   text-transform: uppercase;
 }
-
-@import "bootstrap";
-@import "magnific-popup"
