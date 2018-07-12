@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 #jQuery
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Bootstrap 4
 gem 'bootstrap', '~> 4.1.0'
