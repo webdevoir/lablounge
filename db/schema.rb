@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610232126) do
+ActiveRecord::Schema.define(version: 20180709043548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 20180610232126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image", default: [], array: true
+  end
+
+  create_table "lash_consents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.text "notes"
+    t.boolean "lash_lift_before"
+    t.string "natural_lashes"
+    t.string "allergies"
+    t.string "brows_lashes_tinted"
+    t.string "hair_color_allergy"
+    t.text "medical_past"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "birthdate"
   end
 
   create_table "service_items", force: :cascade do |t|

@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-8">
+      <div class="consent-header text-center">
+        <%= image_tag('LAB-logo-blk.png', height: '100', width: '150', id: 'side-nav-img') %>
+        <h3>Eyelash Lift and Tint Consent</h3>
+        <hr>
+      </div>
+
+      <%= form_for @lash_consent do |f| %>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label :first_name %>
+            <div>
+              <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= f.label :last_name %>
+            <div>
+              <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label :address1 %>
+            <div>
+              <%= f.text_field :address1, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= f.label :address2 %>
+            <div>
+              <%= f.text_field :address2, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <%= f.label :city %>
+            <div>
+              <%= f.text_field :city, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <%= f.label :state %>
+            <div>
+              <%= f.text_field :state, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <%= f.label :zip %>
+            <div>
+              <%= f.text_field :zip, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <div>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone %>
+          <div>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :birthdate, "Date of Birth" %>
+          <div>
+            <%= f.text_field :birthdate, class: 'form-control datepicker' %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+  </div>
+</div>
