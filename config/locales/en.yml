@@ -31,6 +31,28 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      lash_consent:
+        lash_lift_before: ''
+        brows_lashes_tinted: ''
+        hair_color_allergy: ''
+        consent: ''
+        natural_lashes: ''
+    errors:
+      models:
+        lash_consent:
+          attributes:
+            natural_lashes:
+              blank: "Must select at least one option for Natural Lashes"
+            lash_lift_before:
+              inclusion: "Must select yes or no if you've had a Lash Lift before"
+            brows_lashes_tinted:
+              inclusion: "Must select yes or no if you have had your brows/lashes tinted before"
+            hair_color_allergy:
+              inclusion: "Must select yes or no if you have had any hair color allergies"
+            consent:
+              inclusion: "Must consent to disclosure/statement in order to submit Consent form"
   errors:
     messages:
       carrierwave_processing_error: "Cannot resize image."
