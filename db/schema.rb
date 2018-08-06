@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709043548) do
+ActiveRecord::Schema.define(version: 20180805232027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,16 @@ ActiveRecord::Schema.define(version: 20180709043548) do
     t.string "phone"
     t.text "notes"
     t.boolean "lash_lift_before"
-    t.string "natural_lashes"
     t.string "allergies"
-    t.string "brows_lashes_tinted"
-    t.string "hair_color_allergy"
-    t.text "medical_past"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "birthdate"
+    t.string "birthdate"
+    t.text "natural_lashes", default: [], array: true
+    t.text "medical_history", default: [], array: true
+    t.boolean "brows_lashes_tinted"
+    t.boolean "hair_color_allergy"
+    t.boolean "consent"
+    t.datetime "consent_timestamp"
   end
 
   create_table "service_items", force: :cascade do |t|
