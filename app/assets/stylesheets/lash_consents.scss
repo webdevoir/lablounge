@@ -7,8 +7,8 @@
   height: 30px;
 }
 
-.actions {
-  position: absolute !important;
+.wizard-actions {
+  position: absolute;
 }
 
 .consent-label {
@@ -23,7 +23,7 @@
   .steps-container ul li { 
     display: none;
   }
-  .actions {
+  .wizard-actions {
     width: 100%;
     position: relative !important;
     text-align: right;
