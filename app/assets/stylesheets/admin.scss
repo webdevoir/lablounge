@@ -1,6 +1,7 @@
-.side-nav {
+#sidenav {
   border-right: 1px solid black;
-  height: 100vh;
+  overflow: scroll;
+  padding: 30px;
 }
 
 #side-nav-img {
