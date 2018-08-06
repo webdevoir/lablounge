@@ -11,15 +11,15 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery-ui/widgets/datepicker
 //= require popper
 //= require owl.carousel
 //= require bootstrap-sprockets
+//= require fuelux
+//= require jquery-ui/widgets/datepicker
 //= require typed
 //= require isotope.pkgd
 //= require magnific-popup
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 
 // Global application events
@@ -68,11 +68,11 @@ var applicationHandler = (function() {
   }
 })();
 
-$(document).ready(function() {
+$(document).ready(function () {
   $('.datepicker').datepicker({
     changeMonth: true,
     changeYear: true,
     yearRange: "1930:2005"
   });
   applicationHandler.smoothScrolling();
-})
+});
