@@ -12,13 +12,13 @@
  *
  *= require owl.carousel
  *= require owl.theme
+ *= require jquery-ui/datepicker
  *= require_self
  *= require_tree .
  */
 
 @import "fuelux";
 @import "bootstrap";
-@import "jquery-ui/datepicker";
 @import "magnific-popup";
 @import "fonts";
 @import "style";
