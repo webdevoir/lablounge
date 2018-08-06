@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :user, controllers: { sessions: 'user/sessions' }
 
   as :user do
-    get 'login', to: 'user/sessions#new'
+    get 'admin', to: 'user/sessions#new'
   end
 
   namespace :admin do
