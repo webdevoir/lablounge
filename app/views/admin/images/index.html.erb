@@ -17,7 +17,7 @@
     <% end %>
 
     <% if @images.any? %>
-      <div class="row">
+      <div class="row ml-4">
         <% @images.each do |image| %>
           <% image.image.each_with_index do |i, index| %>
             <div class="card" style="width: 18rem;">

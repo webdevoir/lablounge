@@ -10,27 +10,27 @@
 
     <%= link_to 'Add a Service', new_admin_service_path, class: 'btn btn-primary margin-20' %>
 
-    <div class="container shadow padding-50">
-      <table class="table table-hover w-75 mx-auto">
-        <thead>
+
+    <table class="table table-hover w-75 mx-auto">
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |s| %>
           <tr>
-            <th>Service Name</th>
-            <th>Description</th>
-            <th colspan="3"></th>
+            <td><%= s.name %></td>
+            <td><%= s.description %></td>
+            <td><%= link_to 'View/Add Service Items', admin_service_path(s), class: 'badge badge-dark' %></td>
+            <td><%= link_to 'Edit', edit_admin_service_path(s), class: 'badge badge-dark' %></td>
+            <td><%= link_to 'Delete', admin_service_path(s), method: :delete, data: { confirm: 'Are you sure?' }, class: 'badge badge-danger' %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @services.each do |s| %>
-            <tr>
-              <td><%= s.name %></td>
-              <td><%= s.description %></td>
-              <td><%= link_to 'View/Add Service Items', admin_service_path(s), class: 'badge badge-dark' %></td>
-              <td><%= link_to 'Edit', edit_admin_service_path(s), class: 'badge badge-dark' %></td>
-              <td><%= link_to 'Delete', admin_service_path(s), method: :delete, data: { confirm: 'Are you sure?' }, class: 'badge badge-danger' %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
 </div>
