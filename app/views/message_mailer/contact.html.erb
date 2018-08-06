@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New message from <%= @message.name %></h1>
+    <p><strong>Subject:</strong> <%= @message.subject %></p>
+    <p><strong>Email:</strong> Reply to: <a href="mailto:<%= @message.email %>?Subject=Replying to your Inquiry from lablounge.com"><%= @message.email %></a></p>
+    <p><strong>Message:</strong> <%= @message.message %></p>
+  </body>
+</html>

@@ -137,7 +137,6 @@
 </div>
 <!-- end section services -->
 
-
 <!-- start section contact -->
 <div id="contact" class="paddsection">
   <div class="container">
@@ -149,57 +148,56 @@
 
             <h2 class="mb-30">GET IN TOUCH</h2>
 
-            <ul class="contact-details">
-              <li><span>23 Main, Street</span></li>
-              <li><span>New York, United States</span></li>
-              <li><span>+88 01912704287</span></li>
-              <li><span>example@example.com</span></li>
-            </ul>
-
           </div>
         </div>
 
         <div class="col-lg-6">
-          <form action="" method="post" role="form" class="contactForm">
-            <div class="row">
-
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-
-              <div class="col-lg-6">
-                <div class="form-group contact-block1">
-                  <input type="text" name="name" class="form-control uppercase" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
+          <%= form_for @message, url: message_path do |f| %>
+            <% if flash[:notice] %>
+              <div class="alert alert-info" role="alert">
+                <%= flash[:notice] %>
+              </div>
+            <% end %>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= f.label :name, hidden: true %>
+                <div>
+                  <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name'  %>
                 </div>
               </div>
 
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <input type="email" class="form-control uppercase" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
+              <div class="form-group col-md-6">
+                <%= f.label :email, hidden: true %>
+                <div>
+                  <%= f.email_field :email, class: 'form-control', placeholder: 'Your Email' %>
                 </div>
               </div>
-
-              <div class="col-lg-12">
-                <div class="form-group">
-                  <input type="text" class="form-control uppercase" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-              </div>
-
-              <div class="col-lg-12">
-                <div class="form-group">
-                  <textarea class="form-control uppercase" name="message" rows="12" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-              </div>
-
-              <div class="col-lg-12">
-                <input type="submit" class="btn btn-defeault btn-send" value="Send message">
-              </div>
-
             </div>
-          </form>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <%= f.label :subject, hidden: true %>
+                <div>
+                  <%= f.text_field :subject, class: 'form-control', placeholder: 'Subject' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <%= f.label :message, hidden: true %>
+                <div>
+                  <%= f.text_area :message, class: 'form-control', style: 'height: 250px;', placeholder: 'Message' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit "Send Message", class: 'btn btn-primary' %>
+            </div>
+
+          <% end %>
+
         </div>
       </div>
     </div>
@@ -226,7 +224,7 @@
 
     <p>&copy; Copyright L.A.B. Lounge 2018. All rights reserved.</p>
 
-    <div class="credits">
+    <div class="credits" hidden="hidden">
       <!--
         All the links in the footer should remain intact.
         You can delete the links only if you purchased the pro version.

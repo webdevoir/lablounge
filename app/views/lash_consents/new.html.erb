@@ -5,7 +5,7 @@
 
     <div class="col-md-8">
       <div class="consent-header text-center">
-        <%= image_tag('LAB-logo-blk.png', height: '100', width: '150', id: 'side-nav-img') %>
+        <%= link_to(image_tag('LAB-logo-blk.png', height: '100', width: '150', class: 'my-5'), root_path) %>
         <h3>Eyelash Lift and Tint Consent</h3>
         <hr>
         <% if @lash_consent.errors.any? %>

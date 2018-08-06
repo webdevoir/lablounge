@@ -28,6 +28,12 @@ Rails.application.routes.draw do
 
   resources :lash_consents, only: [:new, :create, :show]
 
+  post 'message', to: 'home#send_message'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 
   root 'home#homepage'
 end
