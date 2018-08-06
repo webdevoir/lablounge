@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lash_consents, only: [:new, :create]
+  resources :lash_consents, only: [:new, :create, :show]
 
 
   root 'home#homepage'
