@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid fuelux">
+  <div class="row mb-5">
     <div class="col-md-2">
     </div>
 
@@ -8,89 +8,228 @@
         <%= image_tag('LAB-logo-blk.png', height: '100', width: '150', id: 'side-nav-img') %>
         <h3>Eyelash Lift and Tint Consent</h3>
         <hr>
+        <% if @lash_consent.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <p><strong>Please fix the following errors:</strong></p>
+            <% @lash_consent.errors.full_messages.each do |error| %>
+              <p><%= error %></p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      <div class="wizard" data-initialize="wizard" id="myWizard">
+        <div class="steps-container">
+          <ul class="steps">
+            <li data-step="1" data-name="basic-information" class="active">
+              <span class="badge">1</span>Basic Information
+              <span class="chevron"></span>
+            </li>
+            <li data-step="2" data-name="contact-information">
+              <span class="badge">2</span>Contact Information
+              <span class="chevron"></span>
+            </li>
+            <li data-step="3" data-name="medical-history">
+              <span class="badge">3</span>Medical History
+              <span class="chevron"></span>
+            </li>
+            <li data-step="4" data-name="consent">
+              <span class="badge">4</span>Consent
+              <span class="chevron"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-default btn-prev">
+            <span class="glyphicon glyphicon-arrow-left"></span>Prev</button>
+          <button type="button" class="btn btn-primary btn-next" data-last="Complete">Next
+            <span class="glyphicon glyphicon-arrow-right"></span>
+          </button>
+        </div>
+        <div class="step-content">
+          <div class="step-pane active sample-pane alert" data-step="1">
+            <h3 class="mb-3">Basic Client Information</h3>
 
-      <%= form_for @lash_consent do |f| %>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <%= f.label :first_name %>
-            <div>
-              <%= f.text_field :first_name, class: 'form-control' %>
+            <%= form_for @lash_consent do |f| %>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <%= f.label :first_name, 'First Name*' %>
+                  <div>
+                    <%= f.text_field :first_name, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <%= f.label :last_name, 'Last Name*' %>
+                  <div>
+                    <%= f.text_field :last_name, class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <%= f.label :address1 %>
+                  <div>
+                    <%= f.text_field :address1, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <%= f.label :address2 %>
+                  <div>
+                    <%= f.text_field :address2, class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <%= f.label :city %>
+                  <div>
+                    <%= f.text_field :city, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <%= f.label :state %>
+                  <div>
+                    <%= f.text_field :state, class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <%= f.label :zip %>
+                  <div>
+                    <%= f.text_field :zip, class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :birthdate, "Date of Birth*" %>
+                <div>
+                  <%= f.text_field :birthdate, class: 'form-control datepicker', placeholder: 'MM/DD/YYYY' %>
+                </div>
+              </div>
             </div>
+
+          <div class="step-pane sample-pane alert" data-step="2">
+            <h3 class="mb-3">Client Contact Information</h3>
+              <div class="form-group">
+                <%= f.label :email, 'Email Address*' %>
+                <div>
+                  <%= f.email_field :email, class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :phone, 'Phone Number*' %>
+                <div>
+                  <%= f.text_field :phone, class: 'form-control' %>
+                </div>
+              </div>
           </div>
 
-          <div class="form-group col-md-6">
-            <%= f.label :last_name %>
-            <div>
-              <%= f.text_field :last_name, class: 'form-control' %>
+          <div class="step-pane sample-pane alert" data-step="3">
+            <h3 class="mb-3">Medical History</h3>
+              <div class="form-group">
+                <%= f.label :lash_lift_before, "Have you had a Lash Lift before?*", class: 'consent-label' %>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :lash_lift_before, "true", class: 'form-check-input' %>
+                  <label class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :lash_lift_before, "false", class: 'form-check-input' %>
+                  <label class="form-check-label">No</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :natural_lashes, "How would you describe your natural lashes?*", class: 'consent-label' %>
+                <% LashConsent::NATURAL_LASHES.each do |lash_type| %>
+                  <div class="form-check form-check-inline">
+                    <%= f.check_box :natural_lashes, { multiple: true, class: 'form-check-input' }, lash_type, nil %>
+                    <%= f.label lash_type, class: 'form-check-label' %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :allergies, "List any allergies you may have, if any." %>
+                <div>
+                  <%= f.text_area :allergies, class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :brows_lashes_tinted, "Have you ever had your brows or lashes tinted?*", class: 'consent-label' %>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :brows_lashes_tinted, "true", class: 'form-check-input' %>
+                  <label class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :brows_lashes_tinted, "false", class: 'form-check-input' %>
+                  <label class="form-check-label">No</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :hair_color_allergy, "Have you had an allergic reaction to hair color?*", class: 'consent-label' %>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :hair_color_allergy, "true", class: 'form-check-input' %>
+                  <label class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :hair_color_allergy, "false", class: 'form-check-input' %>
+                  <label class="form-check-label">No</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :medical_history, "Please check all that apply:", class: 'consent-label' %>
+                <% LashConsent::MEDICAL_HISTORY_ITEMS.each do |medical_history| %>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-check form-check-inline">
+                        <%= f.check_box :medical_history, { multiple: true, class: 'form-check-input' }, medical_history, nil %>
+                        <%= f.label medical_history, class: 'form-check-label' %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
+
+          <div class="step-pane sample-pane alert" data-step="4">
+            <h3 class="mb-3">Consent</h3>
+                <!-- Trigger modal -->
+                <a href="#" data-toggle="modal" data-target="#consentModal" class="text-center" id="disclosureLink"><p><strong>Click to Read Disclosure Information</strong></p></a>
+                <p>Please e-consent by checking the Consent Checkbox below to indicate that you have read all statements and understand:</p>
+                <ul>
+                  <li>I, the client herein signed, certify that I have read and had explained to me and fully understand <br>
+                    the above waiver and release form. I have provided information regarding my health and <br>
+                    medications taken to the best of my knowledge, the client herein signed, for the purposed of <br>
+                    documentation, hereby consent to any “before and after” photographs, which may or may not <br>
+                    be used for the purposes of advertising.</li>
+                  <li>RESERVATION and CANCELLATION POLICY: A DEPOSIT OF 50% IS REQUIRED FOR ALL APPOINTMENTS. 48 hours ADVANCE NOTICE OF CANCELATION REQUIRED. LESS THAN A 48 hours NOTICE AND NO SHOWS WILL BE NON-REFUNDABLE.</li>
+                  <li>I UNDERSTAND THE RESERVATION AND CANCELLATION POLICIES AT <strong>L.A.B. /Lash and Brow Lounge</strong> IS NON-REFUNDABLE IF I FAIL TO GIVE 48 hours NOTICE OF CANCELLATION OR NO SHOW ON MY APPOINTMENT.</li>
+                </ul>
+
+                <div class="form-group text-center">
+                  <div class="form-check form-check-inline">
+                    <%= f.check_box :consent, value: true, class: 'form-check-input' %>
+                    <%= f.label :consent, 'I Consent', class: 'form-check-label' %>
+                  </div>
+              </div>
+
+                <%= render 'consent' %>
+                <div class="text-center">
+                  <%= f.submit "Submit", class: 'btn btn-primary' %>
+                </div>
+            <% end %>
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <%= f.label :address1 %>
-            <div>
-              <%= f.text_field :address1, class: 'form-control' %>
-            </div>
-          </div>
-
-          <div class="form-group col-md-6">
-            <%= f.label :address2 %>
-            <div>
-              <%= f.text_field :address2, class: 'form-control' %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <%= f.label :city %>
-            <div>
-              <%= f.text_field :city, class: 'form-control' %>
-            </div>
-          </div>
-
-          <div class="form-group col-md-4">
-            <%= f.label :state %>
-            <div>
-              <%= f.text_field :state, class: 'form-control' %>
-            </div>
-          </div>
-
-          <div class="form-group col-md-4">
-            <%= f.label :zip %>
-            <div>
-              <%= f.text_field :zip, class: 'form-control' %>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :email %>
-          <div>
-            <%= f.email_field :email, class: 'form-control' %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :phone %>
-          <div>
-            <%= f.text_field :phone, class: 'form-control' %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :birthdate, "Date of Birth" %>
-          <div>
-            <%= f.text_field :birthdate, class: 'form-control datepicker' %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.submit "Submit", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
     </div>
 
     <div class="col-md-2">
