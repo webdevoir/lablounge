@@ -54,8 +54,8 @@ gem "mini_magick"
 # Carousel
 gem 'owlcarousel-rails'
 
-# FuelUX Form Wizard
-gem 'fuelux-rails-sass'
+# # FuelUX Form Wizard
+# gem 'fuelux-rails-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

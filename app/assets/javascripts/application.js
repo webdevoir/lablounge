@@ -14,7 +14,6 @@
 //= require popper
 //= require owl.carousel
 //= require bootstrap-sprockets
-//= require fuelux
 //= require jquery-ui/widgets/datepicker
 //= require typed
 //= require isotope.pkgd
@@ -75,4 +74,5 @@ $(document).ready(function () {
     yearRange: "1930:2005"
   });
   applicationHandler.smoothScrolling();
+  $('#myWizard').wizard();
 });
