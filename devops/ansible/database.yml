@@ -1,0 +1,12 @@
+ #
+# To run playbook:
+#   cd devops/ansible
+#   ansible-playbook database.yml -i hosts/staging
+#
+# To run specific roles, tag the role(s) dev and use the --tags option:
+#   ansible-playbook database.yml -i hosts/staging --tags dev -v
+#
+- hosts: database
+
+  roles:
+    - { role: ANXS.postgresql, become: yes }

@@ -1,0 +1,23 @@
+postgres_user: lablounge
+postgres_db: lablounge_production
+postgres_pw_path: "/tmp/ansible-{{ app_name }}-postgres-{{inventory_hostname}}-pw.txt"
+
+#
+# Role: ANXS.postgres
+#
+postgresql_version: 9.6
+postgresql_databases:
+  - name: "{{ postgres_db }}"
+    hstore: yes
+    uuid_ossp: yes
+    citext: yes
+    owner: "{{ postgres_user }}"
+postgresql_users:
+  - name: "{{ postgres_user }}"
+    pass: "{{ lookup('password', '{{ postgres_pw_path }} length=16 encrypt=md5_crypt') }}"
+    encrypted: yes
+postgresql_user_privileges:
+  - name: "{{ postgres_user }}"
+    db: "{{ postgres_db }}"
+    priv: "ALL"
+    role_after_flags: "CREATEDB"

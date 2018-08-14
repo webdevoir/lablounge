@@ -1,0 +1,9 @@
+#
+# Inventory File for Production Server
+# Usage: ansible-playbook webserver.yml -i hosts/production --ask-become-pass
+#
+[webserver]
+production ansible_host=lablounge.com ansible_user=provision
+
+[database]
+production ansible_host=lablounge.com ansible_user=provision
