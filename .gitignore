@@ -20,3 +20,6 @@
 
 public/uploads/image
 public/uploads/tmp
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
